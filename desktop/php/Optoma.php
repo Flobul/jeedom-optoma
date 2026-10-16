@@ -11,58 +11,11 @@ if ($state == 1) {
     echo '<div class="alert jqAlert alert-warning" id="div_inclusionAlert" style="margin : 0px 5px 15px 15px; padding : 7px 35px 7px 15px;">{{Vous êtes en mode inclusion. Cliquez à nouveau sur le bouton d\'inclusion pour sortir de ce mode}}</div>';
 }
 ?>
+<?php include_file('desktop', 'Optoma', 'css', 'Optoma'); ?>
 <div class="row row-overflow">
   <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay" style="border-left: solid 1px #EEE; padding-left: 25px;">
-    <legend class="help" data-help="{{Pour utiliser le mode inclusion, il faut au préalable avoir activé la fonction AMX Device Discovery sur votre vidéoprojecteur.}}"><i class="fa fa-cog"></i> {{Gestion}}</legend>
+    <legend class="help" data-help="{{Pour utiliser le mode inclusion, il faut au préalable avoir activé la fonction AMX Device Discovery sur votre vidéoprojecteur.}}"><i class="fas fa-cog"></i> {{Gestion}}</legend>
     <div class="eqLogicThumbnailContainer">
-      <style>
-        .eqLogicThumbnailDisplay .eqLogicThumbnailContainer .changeIncludeState[data-state="0"] {
-          background-color: #8000FF !important;
-          height: 140px;
-          margin-bottom: 10px;
-          padding: 5px;
-          border-radius: 2px;
-          width: 160px;
-          margin-left: 10px;
-        }
-
-        .eqLogicThumbnailDisplay .eqLogicThumbnailContainer .fas.fa-sign-in-alt.fa-rotate-90 {
-          font-size: 38px !important;
-          color: #ea1b39;
-        }
-
-        .eqLogicThumbnailDisplay .eqLogicThumbnailContainer .changeIncludeState>span {
-          color: #ea1b39;
-        }
-
-        .fas.fa-question-circle.tooltips.tooltipstered {
-          color: var(--al-info-color) !important;
-        }
-
-        .eqLogicDisplayCard.cursor {
-          height: 180px !important;
-          text-align: center;
-          background-color: rgb(255, 255, 255);
-          margin-bottom: 10px;
-          padding: 5px;
-          border-top-left-radius: 2px;
-          border-top-right-radius: 2px;
-          border-bottom-right-radius: 2px;
-          border-bottom-left-radius: 2px;
-          width: 160px;
-          margin-left: 10px;
-          left: 0px;
-          top: 0px;
-        }
-
-        #TELNETgroup>label {
-          background-color: lightgrey;
-        }
-
-        #APIgroup>label {
-          background-color: lightslategray;
-        }
-      </style>
       <?php
       if ($state == 1) {
           echo '<div class="cursor changeIncludeState card" data-state="0" >';
@@ -86,12 +39,12 @@ if ($state == 1) {
         <span>{{Ajouter}}</span>
       </div>
       <div class="cursor eqLogicAction logoSecondary" data-action="gotoPluginConf">
-        <i class="fa fa-wrench"></i>
+        <i class="fas fa-wrench"></i>
         <br>
         <span>{{Configuration}}</span>
       </div>
       <div class="cursor logoSecondary" id="bt_healthoptoma">
-        <i class="fas fa-medkit"></i>
+        <i class="fas fa-heartbeat"></i>
         <span>
           <center>{{Santé}}</center>
         </span>
@@ -143,17 +96,17 @@ if ($state == 1) {
   <div class="col-xs-12 eqLogic" style="display: none;">
     <div class="input-group pull-right" style="display:inline-flex">
       <span class="input-group-btn">
-        <a class="btn btn-default btn-sm eqLogicAction roundedLeft" data-action="configure"><i class="fa fa-cogs"></i> {{Configuration avancée}}</a>
+        <a class="btn btn-default btn-sm eqLogicAction roundedLeft" data-action="configure"><i class="fas fa-cogs"></i> {{Configuration avancée}}</a>
         <a class="btn btn-default btn-sm eqLogicAction" data-action="copy"><i class="fas fa-copy"></i> {{Dupliquer}}</a>
         <a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fas fa-check-circle"></i> {{Sauvegarder}}</a>
         <a class="btn btn-danger btn-sm eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>
       </span>
     </div>
     <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation"><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fa fa-arrow-circle-left"></i></a></li>
+      <li role="presentation"><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fas fa-arrow-circle-left"></i></a></li>
       <li role="presentation" class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fas fa-tachometer-alt"></i> {{Équipement}}</a></li>
-      <li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> {{Commandes}}</a></li>
-      <li role="presentation"><a href="#infotab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-info-circle"></i> {{Informations}}</a></li>
+      <li role="presentation"><a href="#commandtab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fas fa-list-alt"></i> {{Commandes}}</a></li>
+      <li role="presentation"><a href="#infotab" aria-controls="profile" role="tab" data-toggle="tab"><i class="fas fa-info-circle"></i> {{Informations}}</a></li>
     </ul>
     <div class="tab-content" style="height:calc(100% - 50px);overflow:auto;overflow-x: hidden;">
       <div role="tabpanel" class="tab-pane active" id="eqlogictab">
@@ -231,7 +184,7 @@ saisissez l'adresse manuellement.}}">{{Adresse IP}}
               <div class="form-group">
                 <label class="col-sm-3 control-label">{{Accès à la page web}}</label>
                 <div class="col-sm-3">
-                  <a class="btn btn-default  pull-left" id="bt_weboptoma"><i class="fa fa-cogs"></i> {{Interface web Optoma}}</a>
+                  <a class="btn btn-default  pull-left" id="bt_weboptoma"><i class="fas fa-cogs"></i> {{Interface web Optoma}}</a>
                 </div>
               </div>
               <div class="form-group" style="display:none">
@@ -252,7 +205,7 @@ saisissez l'adresse manuellement.}}">{{Adresse IP}}
         </div>
         <div class="col-sm-6">
           <form class="form-horizontal">
-            <legend><i class="fa fa-wrench icon_orange"></i> {{Configuration}}</legend>
+            <legend><i class="fas fa-wrench icon_orange"></i> {{Configuration}}</legend>
             <fieldset>
               <div class="form-group">
                 <div class="col-sm-4 control-label">

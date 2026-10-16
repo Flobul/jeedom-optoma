@@ -14,35 +14,33 @@
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*   // attribuer le même niveau de log à tous les logs du plugin
-   $('#bt_savePluginLogConfig').off('click').on('click', function () {
-       // id du plugin
-       var plugin = $('#span_plugin_id').text();
-       // object du level des log du nom de l'id
-       var logPluginLevel = $('#div_plugin_log').getValues('.configKey')[0];
-       // string du level des log du nom de l'id
-       var logPluginLeveltoStr = JSON.stringify(logPluginLevel);
+// Attribuer le même niveau à tous les logs du plugin.
+document.getElementById('bt_savePluginLogConfig')?.addEventListener('click', function () {
+  const pluginId = document.getElementById('span_plugin_id')?.textContent.trim();
+  const logContainer = document.getElementById('div_plugin_log');
+  if (!pluginId || !logContainer) return;
 
-       // liste de tous les log de l'id du plugin
-       $('.bt_plugin_conf_view_log').each(function () {
-           // remplacer log::level::Optoma par log::level::Optooma_Daemon
-           logPluginLeveltoStr = logPluginLeveltoStr.replace("log::level::" + plugin, "log::level::" + $(this).attr('data-log'));
-           // converti en objet
-           newLogPluginLevel = JSON.parse(logPluginLeveltoStr);
-           // save dans la config jeedom
-           jeedom.config.save({
-               configuration: newLogPluginLevel,
-               error: function(error) {
-                   alert_div_plugin_configuration.showAlert({message: error.message, level: 'danger'})
-               },
-               success: function() {
-                   alert_div_plugin_configuration.showAlert({message: '{{Sauvegarde de la configuration des logs dev effectuée}}', level: 'success'})
-                   modifyWithoutSave = false
-               }
-           });
-       });
-   });*/
+  const baseConfiguration = JSON.stringify(logContainer.getJeeValues('.configKey')[0]);
+  document.querySelectorAll('.bt_plugin_conf_view_log').forEach(function (button) {
+    const configuration = JSON.parse(
+      baseConfiguration.replace('log::level::' + pluginId, 'log::level::' + button.dataset.log)
+    );
 
-   // afficher juste avant la version, la véritable version contenue dans le plugin
-   var dateVersion = $("#span_plugin_install_date").html();
-   $("#span_plugin_install_date").empty().append("v" + version + " (" + dateVersion + ")");
+    jeedom.config.save({
+      configuration: configuration,
+      error: function (error) {
+        jeedomUtils.showAlert({message: error.message, level: 'danger'});
+      },
+      success: function () {
+        jeedomUtils.showAlert({message: '{{Sauvegarde de la configuration des logs dev effectuée}}', level: 'success'});
+        modifyWithoutSave = false;
+      }
+    });
+  });
+});
+
+// Afficher la version du plugin devant la date d'installation.
+const installDate = document.getElementById('span_plugin_install_date');
+if (installDate) {
+  installDate.textContent = 'v' + version + ' (' + installDate.textContent + ')';
+}

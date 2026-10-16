@@ -1,0 +1,55 @@
+.eqLogicThumbnailDisplay .changeIncludeState[data-state="0"] {
+    width: 160px;
+    height: 140px;
+    margin: 0 0 10px 10px;
+    padding: 5px;
+    border-radius: 2px;
+    background-color: #8000ff !important;
+}
+
+.eqLogicThumbnailDisplay .fas.fa-sign-in-alt.fa-rotate-90 {
+    color: #ea1b39;
+    font-size: 38px !important;
+}
+
+.eqLogicThumbnailDisplay .changeIncludeState > span {
+    color: #ea1b39;
+}
+
+.eqLogicDisplayCard.cursor {
+    left: 0;
+    top: 0;
+    width: 160px;
+    height: 180px !important;
+    margin: 0 0 10px 10px;
+    padding: 5px;
+    border-radius: 2px;
+    text-align: center;
+    background-color: #fff;
+}
+
+#TELNETgroup > label {
+    background-color: #d3d3d3;
+}
+
+#APIgroup > label {
+    background-color: #778899;
+}
+
+[data-theme="core2019_Dark"] .eqLogicThumbnailDisplay {
+    border-left-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+[data-theme="core2019_Dark"] .eqLogicDisplayCard.cursor,
+[data-theme="core2019_Dark"] .eqLogic .tab-content,
+[data-theme="core2019_Dark"] #table_infoseqlogic {
+    color: rgba(255, 255, 255, 0.87);
+    border-color: rgba(255, 255, 255, 0.14);
+    background-color: #24282d;
+}
+
+[data-theme="core2019_Dark"] #TELNETgroup > label,
+[data-theme="core2019_Dark"] #APIgroup > label {
+    color: rgba(255, 255, 255, 0.9);
+    background-color: #343a40;
+}

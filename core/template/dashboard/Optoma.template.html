@@ -1,6 +1,6 @@
 <div class="eqLogic eqLogic-widget allowResize allowReorderCmd #custom_layout# #class#" data-eqType="#eqType#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" style="width: #width#;height: #height#; margin: 4px; padding: 0px; position: absolute; #style#">
 	<span class="statusCmd" style="position : absolute;right : 5px; width : 30px;z-index: 1030;"></span>
-	<i class='fa fa-refresh pull-right cursor refresh' style="margin-top: 3px;margin-right: 6px;"></i>
+	<i class='fas fa-refresh pull-right cursor refresh' style="margin-top: 3px;margin-right: 6px;"></i>
 	<center><a href="#eqLink#" style="font-size : 1.5em;"> #name# </a></center>
 
 		<span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#">
@@ -73,99 +73,74 @@
 
 
 	<script>
-		var eqLogic          = $('.eqLogic[data-eqLogic_uid=#uid#]');
-		var image_sound      = 'plugins/Optoma/core/template/images/sound.png';
-		var image_mute       = 'plugins/Optoma/core/template/images/mute.png';
-		var image_power_on   = 'plugins/Optoma/core/template/images/power_on.png';
-		var image_power_off  = 'plugins/Optoma/core/template/images/power_off.png';
+	(() => {
+		const widget = document.querySelector('.eqLogic[data-eqLogic_uid="#uid#"]');
+		if (!widget) return;
 
-        if ('#setinput_source_listvalue#' != '#' + 'setinput_source_listvalue#' && '#input_source#' != '#' + 'input_source#') {
-            printListValue('#setinput_source_listvalue#', '#input_source#', "inputSelectCmd");
-        }
-        if ('#setbrightness_mode_listvalue#' != '#' + 'setbrightness_mode_listvalue#' && '#brightness_mode#' != '#' + 'brightness_mode#') {
-            printListValue('#setbrightness_mode_listvalue#', '#brightness_mode#', "brightnessModeSelectCmd");
-        }
-        if ('#setdisplay_mode_listvalue#' != '#' + 'setdisplay_mode_listvalue#' && '#display_mode#' != '#' + 'display_mode#') {
-            printListValue('#setdisplay_mode_listvalue#', '#display_mode#', "displayModeSelectCmd");
-        }
-        if ('#setaspect_ratio_listvalue#' != '#' + 'setaspect_ratio_listvalue#' && '#aspect_ratio#' != '#' + 'aspect_ratio#') {
-            printListValue('#setaspect_ratio_listvalue#', '#aspect_ratio#', "aspectRatioSelectCmd");
-        }
+		const images = {
+			sound: 'plugins/Optoma/core/template/images/sound.png',
+			mute: 'plugins/Optoma/core/template/images/mute.png',
+			powerOn: 'plugins/Optoma/core/template/images/power_on.png',
+			powerOff: 'plugins/Optoma/core/template/images/power_off.png'
+		};
 
-
-		if('#power_status#' == 0) {
-			eqLogic.find('.cmd[data-cmd_id=#power_on_id#]').append("<img src='" + image_power_on + "'/>");
-			eqLogic.find('.cmd[data-cmd_id=#power_off_id#]').hide();
-			eqLogic.find('##id#svg').attr({"fill":"#AD0C37",'title':'OFF</br>Depuis #collect_power#'});
-		} else {
-			eqLogic.find('.cmd[data-cmd_id=#power_on_id#]').hide();
-			eqLogic.find('.cmd[data-cmd_id=#power_off_id#]').append("<img src='" + image_power_off + "'/>");
-			eqLogic.find('##id#svg').attr({"fill":"#39BE11",'title':'ON</br>Depuis #collect_power#'});
-		}
-		if('#mute_status#' == 0) {
-			eqLogic.find('##id#_mute_action').append("<img src='" + image_sound + "'/>");
-		} else {
-			eqLogic.find('##id#_mute_action').append("<img src='" + image_mute + "'/>");
-		}
-		$('##id#_mute_action').on('click', function(){
-			if('#mute_status#' == 0) {
-				jeedom.cmd.execute({id: '#id_mute_on#'});
-			} else {
-				jeedom.cmd.execute({id: '#id_mute_off#'});
-			}
-		});
-		$('##id#_power_action').on('click', function(){
-            switch ('#power_status#') {
-                case '0':
-                    jeedom.cmd.execute({id: '#id_power_on#'});
-                    break;
-                case '1':
-                    jeedom.cmd.execute({id: '#id_power_off#'});
-                    break;
-            }
-            if ('#power_status#' == 0) {
-                jeedom.cmd.execute({id: '#id_power_on#'});
-            } else {
-                jeedom.cmd.execute({id: '#id_power_off#'});
-            }
-  		});
-      	if ('#lampHourTotal_value#' != '#' + 'lampHourTotal_value#'){
-            eqLogic.find('.lampHourTotal').hide();
-        }
-      	if ('#device_type#' != '#' + 'device_type#'){
-            eqLogic.find('.deviceType').hide();
-        }
-      	if ('#device_model#' != '#' + 'device_model#'){
-            eqLogic.find('.deviceModel').hide();
-        }
-
-		$('##id#_volumeup_action').on('click', function(){
-			jeedom.cmd.execute({id: '#volume_up_id#'});
-		});
-		$('##id#_volumedown_action').on('click', function(){
-			jeedom.cmd.execute({id: '#volume_down_id#'});
-		});
-		$('.eqLogic[data-eqLogic_id=#id#] .refresh').on('click', function () {
-			jeedom.cmd.execute({id: '#refresh_id#'});
-		});
-
-      //fonctions
-    function printListValue(inputList, value, cmd){
-        var inputValue = '';
-        var selectList = '';
-        var options = inputList.split(/[;|]+/);
-        for (var i = 0; i < options.length; i++) {
-			if (i % 2 === 0) {
-				inputValue = options[i];
-			} else {
-				if (options[i] == value) {
-					selectList += '<option value="' + inputValue + '" selected>' + options[i] + '</option>';
-				} else {
-					selectList += '<option value="' + inputValue + '">' + options[i] + '</option>';
-				}
+		function printListValue(inputList, value, className) {
+			const select = widget.querySelector('.' + className);
+			if (!select) return;
+			const options = inputList.split(/[;|]+/);
+			for (let index = 0; index < options.length; index += 2) {
+				if (options[index + 1] === undefined) continue;
+				const option = document.createElement('option');
+				option.value = options[index];
+				option.textContent = options[index + 1];
+				option.selected = options[index + 1] === value;
+				select.appendChild(option);
 			}
 		}
-		eqLogic.find('.' + cmd).append(selectList);
-    }
+
+		if ('#setinput_source_listvalue#' !== '#' + 'setinput_source_listvalue#' && '#input_source#' !== '#' + 'input_source#') {
+			printListValue('#setinput_source_listvalue#', '#input_source#', 'inputSelectCmd');
+		}
+		if ('#setbrightness_mode_listvalue#' !== '#' + 'setbrightness_mode_listvalue#' && '#brightness_mode#' !== '#' + 'brightness_mode#') {
+			printListValue('#setbrightness_mode_listvalue#', '#brightness_mode#', 'brightnessModeSelectCmd');
+		}
+		if ('#setdisplay_mode_listvalue#' !== '#' + 'setdisplay_mode_listvalue#' && '#display_mode#' !== '#' + 'display_mode#') {
+			printListValue('#setdisplay_mode_listvalue#', '#display_mode#', 'displayModeSelectCmd');
+		}
+		if ('#setaspect_ratio_listvalue#' !== '#' + 'setaspect_ratio_listvalue#' && '#aspect_ratio#' !== '#' + 'aspect_ratio#') {
+			printListValue('#setaspect_ratio_listvalue#', '#aspect_ratio#', 'aspectRatioSelectCmd');
+		}
+
+		const powerOn = widget.querySelector('.cmd[data-cmd_id="#power_on_id#"]');
+		const powerOff = widget.querySelector('.cmd[data-cmd_id="#power_off_id#"]');
+		const projectorIcon = document.getElementById('#id#svg');
+		if ('#power_status#' === '0') {
+			powerOn?.insertAdjacentHTML('beforeend', '<img src="' + images.powerOn + '">');
+			if (powerOff) powerOff.style.display = 'none';
+			projectorIcon?.setAttribute('fill', '#AD0C37');
+			projectorIcon?.setAttribute('title', 'OFF - Depuis #collect_power#');
+		} else {
+			if (powerOn) powerOn.style.display = 'none';
+			powerOff?.insertAdjacentHTML('beforeend', '<img src="' + images.powerOff + '">');
+			projectorIcon?.setAttribute('fill', '#39BE11');
+			projectorIcon?.setAttribute('title', 'ON - Depuis #collect_power#');
+		}
+
+		const muteAction = document.getElementById('#id#_mute_action');
+		muteAction?.insertAdjacentHTML('beforeend', '<img src="' + ('#mute_status#' === '0' ? images.sound : images.mute) + '">');
+		muteAction?.addEventListener('click', () => {
+			jeedom.cmd.execute({id: '#mute_status#' === '0' ? '#id_mute_on#' : '#id_mute_off#'});
+		});
+
+		if ('#lampHourTotal_value#' !== '#' + 'lampHourTotal_value#') widget.querySelector('.lampHourTotal')?.style.setProperty('display', 'none');
+		if ('#device_type#' !== '#' + 'device_type#') widget.querySelector('.deviceType')?.style.setProperty('display', 'none');
+		if ('#device_model#' !== '#' + 'device_model#') widget.querySelector('.deviceModel')?.style.setProperty('display', 'none');
+
+		document.getElementById('#id#_volumeup_action')?.addEventListener('click', () => jeedom.cmd.execute({id: '#volume_up_id#'}));
+		document.getElementById('#id#_volumedown_action')?.addEventListener('click', () => jeedom.cmd.execute({id: '#volume_down_id#'}));
+		widget.querySelectorAll('.refresh').forEach(button => {
+			button.addEventListener('click', () => jeedom.cmd.execute({id: '#refresh_id#'}));
+		});
+	})();
 	</script>
 </div>

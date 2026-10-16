@@ -9,8 +9,8 @@
   "hasDependency": false,
   "hasOwnDeamon": true,
   "maxDependancyInstallTime": 0,
-  "changelog": "https://flobul.github.io/Jeedom-Optoma/#language#/changelog",
-  "documentation": "https://flobul.github.io/Jeedom-Optoma/#language#/",
+  "changelog": "https://flobul.github.io/jeedom-optoma/#language#/changelog",
+  "documentation": "https://flobul.github.io/jeedom-optoma/#language#/",
   "link": {
     "forum": "https://community.jeedom.com/tag/plugin-optoma"
   },

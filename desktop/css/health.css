@@ -1,0 +1,25 @@
+/** Optoma — modal Santé. */
+#optoma-health { --optoma-health-blue:#0875be; --optoma-health-border:rgba(127,127,127,.23); --optoma-health-surface:rgba(255,255,255,.86); box-sizing:border-box; width:min(100%,1320px); margin:0 auto; padding:8px 12px 24px; }
+#optoma-health .optoma-health-hero { display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:16px; margin-bottom:16px; padding:22px 24px; border-radius:16px; color:#fff; background:linear-gradient(125deg,#043f69 0%,#0875be 58%,#40a6e9 130%); box-shadow:0 9px 24px rgba(0,65,105,.18); }
+#optoma-health .optoma-health-hero-icon, #optoma-health .optoma-health-summary-icon { display:inline-flex; align-items:center; justify-content:center; }
+#optoma-health .optoma-health-hero-icon { width:62px; height:62px; border:1px solid rgba(255,255,255,.28); border-radius:17px; background:rgba(0,0,0,.14); font-size:29px; }
+#optoma-health .optoma-health-eyebrow { display:block; margin-bottom:2px; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; opacity:.82; }
+#optoma-health .optoma-health-hero h2 { margin:0 0 5px; color:#fff !important; font-size:25px; font-weight:700; }
+#optoma-health .optoma-health-hero p { margin:0; color:rgba(255,255,255,.88) !important; }
+#optoma-health .optoma-health-summary { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-bottom:16px; }
+#optoma-health .optoma-health-summary article { display:flex; align-items:center; gap:12px; min-width:0; padding:14px; border:1px solid var(--optoma-health-border); border-radius:12px; background:var(--optoma-health-surface); box-shadow:0 4px 13px rgba(15,50,75,.06); }
+#optoma-health .optoma-health-summary-icon { flex:0 0 46px; width:46px; height:46px; border-radius:12px; color:var(--optoma-health-blue); background:rgba(8,117,190,.12); font-size:20px; }
+#optoma-health .optoma-health-summary article > div { min-width:0; }
+#optoma-health .optoma-health-summary article div > span, #optoma-health .optoma-health-summary small { display:block; overflow:hidden; font-size:11px; text-overflow:ellipsis; white-space:nowrap; opacity:.68; }
+#optoma-health .optoma-health-summary strong { display:block; margin:2px 0; font-size:21px; }
+#optoma-health .optoma-health-panel { overflow:hidden; border:1px solid var(--optoma-health-border); border-radius:13px; background:var(--optoma-health-surface); }
+#optoma-health .optoma-health-panel-header { display:flex; align-items:center; gap:9px; padding:12px 16px; border-bottom:1px solid var(--optoma-health-border); background:rgba(8,117,190,.07); }
+#optoma-health .optoma-health-panel-header i { color:var(--optoma-health-blue); }
+#optoma-health .optoma-health-panel-header h3 { margin:0; font-size:16px; }
+#optoma-health .table-responsive { margin:0; border:0; }
+#optoma-health .table { margin-bottom:0; }
+#optoma-health .table th, #optoma-health .table td { vertical-align:middle; font-size:12px; }
+#optoma-health .optoma-health-disabled { opacity:.55; }
+[data-theme="core2019_Dark"] #optoma-health { --optoma-health-border:rgba(255,255,255,.13); --optoma-health-surface:rgba(38,43,47,.9); }
+@media (max-width:950px) { #optoma-health .optoma-health-summary { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:560px) { #optoma-health { padding:5px; } #optoma-health .optoma-health-summary { grid-template-columns:1fr; } #optoma-health .optoma-health-hero { padding:18px 16px; } }
