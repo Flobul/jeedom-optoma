@@ -2,7 +2,7 @@
   "id": "Optoma",
   "name": "Optoma vidéoprojecteur",
   "description": "Plugin permettant de récupérer les informations et de piloter les videoprojecteurs Optoma UHD.</br>Comptibilité : les pages web du vidéoprojecteurs sont en *.asp, non compatible pour l'instant avec les pages en *.htm",
-  "licence": "AGPL",
+  "licence": "GPL-3.0",
   "author": "DomoFlo1",
   "require": "4.0",
   "category": "multimedia",
@@ -11,6 +11,8 @@
   "maxDependancyInstallTime": 0,
   "changelog": "https://flobul.github.io/jeedom-optoma/#language#/changelog",
   "documentation": "https://flobul.github.io/jeedom-optoma/#language#/",
+  "changelog_beta": "https://flobul.github.io/jeedom-optoma/#language#/changelog",
+  "documentation_beta": "https://flobul.github.io/jeedom-optoma/#language#/",
   "link": {
     "forum": "https://community.jeedom.com/tag/plugin-optoma"
   },
